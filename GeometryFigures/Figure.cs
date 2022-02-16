@@ -4,24 +4,29 @@ using System.Runtime.Serialization;
 
 namespace GeometryFigures
 {
+    //Тип фигуры
     public enum TypeFigure
     {
-        Circle,
-        Rectangle,
-        Triangle
+        Circle,//Окружность
+        Rectangle,//Прямоугольник
+        Triangle//Треугольник
     }
+    //Интерфейс фигуры
     public interface Figure
     {
-        string Data { get; }
-        string SquareString { get; }
-        string Type { get; }
+        string Data { get; }//Строковое представление данных
+        string SquareString { get; }//Строковое представление площади
+        string Type { get; }//Строковое представление типа фигуры
         double Square();//Рассчет площади
     }
 
+    //Абстрактный класс валидации
     [DataContract]
     public abstract class ValidationClass
     {
-        public abstract void Validation();//Проверка вводимых данных
+        //Метод проверки вводимых данных
+        public abstract void Validation();
+        //Метод проверки пложительных значений
         public void CheckPosValue(string name,double value)
         {
             if(value<0)
@@ -29,6 +34,7 @@ namespace GeometryFigures
                 throw new ArgumentException(String.Format("Значение <{0}> должно быть больше нуля!", name));
             }
         }
+        //Метод преобразования строки в число
         public static double TryParse(string name, string value)
         {
             if(value=="")
@@ -55,13 +61,14 @@ namespace GeometryFigures
             this.Radius = radius;
             Validation();
         }
-
+        //Строковое представление данных
         public string Data => "Радиус = " + Radius;
-
+        //Строковое представление площади
         public string SquareString => Square().ToString();
-
+        //Строковое представление типа фигуры
         public string Type => "Окружность";
 
+        //Метод сравнения характеристик фигур (окружностей)
         public bool Compare(Circle figure)
         {
             if (this.Radius == figure.Radius)
@@ -70,12 +77,12 @@ namespace GeometryFigures
             }
             else { return false; }
         }
-
+        //Метод вычисления площади
         public double Square()
         {
             return P * Radius * Radius;
         }
-
+        //Метод проверки значения характеристик фигур
         public override void Validation()
         {
             CheckPosValue("Радиус", Radius);
@@ -93,13 +100,13 @@ namespace GeometryFigures
             this.Width = width;
             Validation();
         }
-
+        //Строковое представление данных
         public string Data => string.Format("Длина = {0}; Ширина: {1}", Lenght, Width);
-
+        //Строковое представление площади
         public string SquareString => Square().ToString();
-
+        //Строковое представление типа фигуры
         public string Type => "Прямоугольник";
-
+        //Метод сравнения характеристик фигур (прямоугольников)
         public bool Compare(Rectangle figure)
         {
             if (this.Lenght == figure.Lenght &&
@@ -109,10 +116,12 @@ namespace GeometryFigures
             }
             else { return false; }
         }
+        //Метод вычисления площади
         public double Square()
         {
             return Lenght * Width;
         }
+        //Метод проверки значения характеристик фигур
         public override void Validation()
         {
             CheckPosValue("Ширина", Lenght);
@@ -131,13 +140,13 @@ namespace GeometryFigures
             this.Base = Base;
             Validation();
         }
-
+        //Строковое представление данных
         public string Data => string.Format("Высота = {0}; Основание: {1}", Height, Base);
-
+        //Строковое представление площади
         public string SquareString => Square().ToString();
-
+        //Строковое представление типа фигуры
         public string Type => "Треугольник";
-
+        //Метод сравнения характеристик фигур (треугольников)
         public bool Compare(Triangle figure)
         {
             if (this.Base == figure.Base &&
@@ -147,42 +156,50 @@ namespace GeometryFigures
             }
             else { return false; }
         }
+        //Метод вычисления площади
         public double Square()
         {
             return Height * Base / 2;
         }
+        //Метод проверки значения характеристик фигур
         public override void Validation()
         {
             CheckPosValue("Высота", Height);
             CheckPosValue("Основание", Base);
         }
     }
+    //Класс набора фигур
     public class ListFigures
     {
-        List<Figure> figures;
-        Serializer serialization;
+        List<Figure> figures;//Список фигур
+        Serializer serialization;//Объект управления сериализацией
         public List<Figure> Figures => figures;
         public ListFigures()
         {
             figures = new List<Figure>();
             serialization = new Serializer();
         }
+        //Метод добавления фигур
         public void Add(Figure value)
         {
             figures.Add(value);
         }
+        //Метод удаления фигур по номеру
         public void Remove(int number)
         {
             figures.RemoveAt(number);
         }
+        //Метод сохранения набора фигур в файл
         public void Save(string url)
         {
             serialization.Save(figures,url);
         }
+        //Метод загрузки набора фигур из файла
         public void Load(string url)
         {
             figures = serialization.Load(url);
         }
+        //Метод поиска фигур по их типу
         public List<Figure> Search(Type type_object)
         {
             List<Figure> search_list = new List<Figure>();
@@ -195,6 +212,7 @@ namespace GeometryFigures
             }
             return search_list;
         }
+        //Метод поиска фигур по их характеристикам
         public List<Figure> Search(Figure figure)
         {
             List<Figure> search_list = new List<Figure>();
@@ -207,6 +225,7 @@ namespace GeometryFigures
             }
             return search_list;
         }
+        //Метод поиска фигур по их площади
         public List<Figure> Search(double square)
         {
             List<Figure> search_list = new List<Figure>();
@@ -219,6 +238,7 @@ namespace GeometryFigures
             }
             return search_list;
         }
+        //Метод сравнения характерик фигур
         bool Compare(Figure figure1,Figure figure2)
         {
             bool result = false;
@@ -226,13 +246,13 @@ namespace GeometryFigures
             {
                 switch (figure1)
                 {
-                    case Circle c:
+                    case Circle c://Сравнение окружностей
                         result=c.Compare((Circle)figure2);
                         break;
-                    case Rectangle r:
+                    case Rectangle r://Сравнение прямоугольников
                         result=r.Compare((Rectangle)figure2);
                         break;
-                    case Triangle t:
+                    case Triangle t://Сравнение треугольников
                         result=t.Compare((Triangle)figure2);
                         break;
                 }

@@ -33,28 +33,28 @@ namespace View
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStripSearch = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonRemove = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonUpdate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSearch = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.squareStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.figureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRemove = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonUpdate = new System.Windows.Forms.ToolStripButton();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.squareStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.figureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.toolStripSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.figureBindingSource)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,7 +82,7 @@ namespace View
             this.toolStripButtonRemove,
             this.toolStripButtonUpdate,
             this.toolStripSeparator1,
-            this.toolStripButton1});
+            this.toolStripButtonSearch});
             this.toolStripSearch.Location = new System.Drawing.Point(10, 24);
             this.toolStripSearch.Name = "toolStripSearch";
             this.toolStripSearch.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -90,11 +90,56 @@ namespace View
             this.toolStripSearch.TabIndex = 1;
             this.toolStripSearch.Text = "toolStrip1";
             // 
+            // toolStripButtonAdd
+            // 
+            this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAdd.Image = global::View.Properties.Resources.add;
+            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAdd.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(34, 34);
+            this.toolStripButtonAdd.Text = "toolStripButton1";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
+            // 
+            // toolStripButtonRemove
+            // 
+            this.toolStripButtonRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRemove.Image = global::View.Properties.Resources.remove;
+            this.toolStripButtonRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRemove.Name = "toolStripButtonRemove";
+            this.toolStripButtonRemove.Size = new System.Drawing.Size(34, 34);
+            this.toolStripButtonRemove.Text = "S";
+            this.toolStripButtonRemove.Click += new System.EventHandler(this.toolStripButtonRemove_Click);
+            // 
+            // toolStripButtonUpdate
+            // 
+            this.toolStripButtonUpdate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonUpdate.Image = global::View.Properties.Resources.update;
+            this.toolStripButtonUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonUpdate.Name = "toolStripButtonUpdate";
+            this.toolStripButtonUpdate.Size = new System.Drawing.Size(34, 34);
+            this.toolStripButtonUpdate.Text = "toolStripButton2";
+            this.toolStripButtonUpdate.Click += new System.EventHandler(this.toolStripButtonUpdate_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
+            // 
+            // toolStripButtonSearch
+            // 
+            this.toolStripButtonSearch.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.toolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripButtonSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSearch.Image")));
+            this.toolStripButtonSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSearch.Margin = new System.Windows.Forms.Padding(0, 5, 10, 5);
+            this.toolStripButtonSearch.Name = "toolStripButtonSearch";
+            this.toolStripButtonSearch.Size = new System.Drawing.Size(56, 27);
+            this.toolStripButtonSearch.Text = "Поиск";
+            this.toolStripButtonSearch.Click += new System.EventHandler(this.toolStripButtonSearch_Click);
             // 
             // dataGridView1
             // 
@@ -139,6 +184,26 @@ namespace View
             this.ColumnType.ReadOnly = true;
             this.ColumnType.Width = 123;
             // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Данные";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataDataGridViewTextBoxColumn.Width = 93;
+            // 
+            // squareStringDataGridViewTextBoxColumn
+            // 
+            this.squareStringDataGridViewTextBoxColumn.DataPropertyName = "SquareString";
+            this.squareStringDataGridViewTextBoxColumn.HeaderText = "Площадь";
+            this.squareStringDataGridViewTextBoxColumn.Name = "squareStringDataGridViewTextBoxColumn";
+            this.squareStringDataGridViewTextBoxColumn.ReadOnly = true;
+            this.squareStringDataGridViewTextBoxColumn.Width = 107;
+            // 
+            // figureBindingSource
+            // 
+            this.figureBindingSource.DataSource = typeof(GeometryFigures.Figure);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -177,71 +242,6 @@ namespace View
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // toolStripButtonAdd
-            // 
-            this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAdd.Image = global::View.Properties.Resources.add;
-            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAdd.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(34, 34);
-            this.toolStripButtonAdd.Text = "toolStripButton1";
-            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
-            // 
-            // toolStripButtonRemove
-            // 
-            this.toolStripButtonRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRemove.Image = global::View.Properties.Resources.remove;
-            this.toolStripButtonRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRemove.Name = "toolStripButtonRemove";
-            this.toolStripButtonRemove.Size = new System.Drawing.Size(34, 34);
-            this.toolStripButtonRemove.Text = "S";
-            this.toolStripButtonRemove.Click += new System.EventHandler(this.toolStripButtonRemove_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 5, 10, 5);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(56, 27);
-            this.toolStripButton1.Text = "Поиск";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButtonUpdate
-            // 
-            this.toolStripButtonUpdate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUpdate.Image = global::View.Properties.Resources.update;
-            this.toolStripButtonUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonUpdate.Name = "toolStripButtonUpdate";
-            this.toolStripButtonUpdate.Size = new System.Drawing.Size(34, 34);
-            this.toolStripButtonUpdate.Text = "toolStripButton2";
-            this.toolStripButtonUpdate.Click += new System.EventHandler(this.toolStripButtonUpdate_Click);
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Данные";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataDataGridViewTextBoxColumn.Width = 93;
-            // 
-            // squareStringDataGridViewTextBoxColumn
-            // 
-            this.squareStringDataGridViewTextBoxColumn.DataPropertyName = "SquareString";
-            this.squareStringDataGridViewTextBoxColumn.HeaderText = "Площадь";
-            this.squareStringDataGridViewTextBoxColumn.Name = "squareStringDataGridViewTextBoxColumn";
-            this.squareStringDataGridViewTextBoxColumn.ReadOnly = true;
-            this.squareStringDataGridViewTextBoxColumn.Width = 107;
-            // 
-            // figureBindingSource
-            // 
-            this.figureBindingSource.DataSource = typeof(GeometryFigures.Figure);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -260,9 +260,9 @@ namespace View
             this.toolStripSearch.ResumeLayout(false);
             this.toolStripSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.figureBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,7 +287,7 @@ namespace View
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSearch;
         private System.Windows.Forms.ToolStripButton toolStripButtonUpdate;
     }
 }
