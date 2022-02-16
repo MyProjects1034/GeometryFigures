@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 namespace GeometryFigures
@@ -18,7 +14,6 @@ namespace GeometryFigures
     {
         string Data { get; }
         string SquareString { get; }
-
         string Type { get; }
         double Square();//Рассчет площади
     }
@@ -186,7 +181,7 @@ namespace GeometryFigures
         }
         public void Load(string url)
         {
-            figures = (List<Figure>)serialization.Load(url);
+            figures = serialization.Load(url);
         }
         public List<Figure> Search(Type type_object)
         {
