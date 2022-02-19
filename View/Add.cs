@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GeometryFigures;
+using GeometryFigures.Figures;
 
 namespace View
 {
     public partial class Add : Form
     {
-        Figure figure;//Объект фигуры
+        IFigure figure;//Объект фигуры
         Random rand;//Рандом
-        public Figure Figure => figure;
+        public IFigure Figure => figure;
         public Add()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace View
                     case 1://Создание прямоугольника
                         double lenght = ValidationClass.TryParse("Длина", textBox1.Text);
                         double width = ValidationClass.TryParse("Ширина", textBox2.Text);
-                        figure = new GeometryFigures.Rectangle(lenght, width);
+                        figure = new GeometryFigures.Figures.Rectangle(lenght, width);
                         break;
                     case 2://Создание треугольника
                         double base_value = ValidationClass.TryParse("Основание", textBox1.Text);

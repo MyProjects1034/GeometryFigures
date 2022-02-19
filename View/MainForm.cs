@@ -2,19 +2,20 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using GeometryFigures;
+using GeometryFigures.Figures;
 
 namespace View
 {
     public partial class MainForm : Form
     {
         ListFigures list;//Класс набора фигур
-         BindingList<Figure> bindignList;//Список с привязкой данных
+        BindingList<IFigure> bindignList;//Список с привязкой данных
         public MainForm()
         {
             InitializeComponent();
             list = new ListFigures();
             //Настройка привязки данных к таблице
-            bindignList = new BindingList<Figure>(list.Figures);
+            bindignList = new BindingList<IFigure>(list.Figures);
             figureBindingSource.DataSource = bindignList;
             dataGridView1.DataSource = figureBindingSource;
             //Настройка типов сохраняемых/открываемых данных в диалоговых окнах
@@ -67,13 +68,17 @@ namespace View
                 {
                     string url = openFileDialog1.FileName;
                     list.Load(url);
-                    bindignList = new BindingList<Figure>(list.Figures);
+                    bindignList = new BindingList<IFigure>(list.Figures);
                     figureBindingSource.DataSource = bindignList;
                     UpdateNumbers();
                 }
-                catch
+                catch (ArgumentException error)
                 {
-                    MessageBox.Show("Ошибка при открытии файла", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -89,9 +94,13 @@ namespace View
 
                     MessageBox.Show("Данные сохранены", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch
+                catch(ArgumentException error)
                 {
-                    MessageBox.Show("Ошибка при сохранении файла", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 }
             }
@@ -103,7 +112,7 @@ namespace View
             {
                 if (search.Figures.Count > 0)
                 {
-                    bindignList = new BindingList<Figure>(search.Figures);
+                    bindignList = new BindingList<IFigure>(search.Figures);
                     figureBindingSource.DataSource = bindignList;
                     UpdateNumbers();
                 }
@@ -125,7 +134,7 @@ namespace View
         //Обновление данных в таблице
         private void toolStripButtonUpdate_Click(object sender, EventArgs e)
         {
-            bindignList = new BindingList<Figure>(list.Figures);
+            bindignList = new BindingList<IFigure>(list.Figures);
             figureBindingSource.DataSource = bindignList;
             dataGridView1.DataSource = figureBindingSource;
             UpdateNumbers();

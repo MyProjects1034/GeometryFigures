@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfanyType xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" z:Type="System.Collections.Generic.List`1[[GeometryFigures.Figures.IFigure, GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" z:Assembly="0" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+  <_items z:Id="2" z:Size="8">
+    <anyType z:Id="3" z:Type="GeometryFigures.Figures.Circle" z:Assembly="GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Radius xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">4</Radius>
+    </anyType>
+    <anyType z:Id="4" z:Type="GeometryFigures.Figures.Circle" z:Assembly="GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Radius xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">55</Radius>
+    </anyType>
+    <anyType z:Id="5" z:Type="GeometryFigures.Figures.Triangle" z:Assembly="GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Base xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">96</Base>
+      <Height xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">98</Height>
+    </anyType>
+    <anyType z:Id="6" z:Type="GeometryFigures.Figures.Triangle" z:Assembly="GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Base xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">31</Base>
+      <Height xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">12</Height>
+    </anyType>
+    <anyType z:Id="7" z:Type="GeometryFigures.Figures.Rectangle" z:Assembly="GeometryFigures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Lenght xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">91</Lenght>
+      <Width xmlns="http://schemas.datacontract.org/2004/07/GeometryFigures.Figures">48</Width>
+    </anyType>
+    <anyType i:nil="true" />
+    <anyType i:nil="true" />
+    <anyType i:nil="true" />
+  </_items>
+  <_size>5</_size>
+  <_version>5</_version>
+</ArrayOfanyType>

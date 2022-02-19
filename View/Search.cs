@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using GeometryFigures;
+using GeometryFigures.Figures;
 
 namespace View
 {
     public partial class Search : Form
     {
-        List<Figure> figures;//Список найденных фигур
+        List<IFigure> figures;//Список найденных фигур
         ListFigures listFigures;//Класс набора фигур
         TypeFigure type;//Тип фигуры
-        public List<Figure> Figures => figures;
+        public List<IFigure> Figures => figures;
         public Search(ListFigures listFigures)
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace View
             radioButtonType.Checked = true;
             //Инициализация данных
             this.listFigures = listFigures;
-            figures = new List<Figure>();
+            figures = new List<IFigure>();
         }
         //**************************************
         //Обработка событий изменения типа поиска
@@ -111,7 +112,7 @@ namespace View
                         figures = listFigures.Search(typeof(Circle));
                         break;
                     case TypeFigure.Rectangle://Для прямоугольника
-                        figures = listFigures.Search(typeof(GeometryFigures.Rectangle));
+                        figures = listFigures.Search(typeof(GeometryFigures.Figures.Rectangle));
                         break;
                     case TypeFigure.Triangle://Для треугольника
                         figures = listFigures.Search(typeof(Triangle));
@@ -131,7 +132,7 @@ namespace View
                     case TypeFigure.Rectangle://Для прямоугольника
                         double lenght = ValidationClass.TryParse("Длина", textBox1.Text);
                         double width = ValidationClass.TryParse("Ширина", textBox2.Text);
-                        figures = listFigures.Search(new GeometryFigures.Rectangle(lenght, width));
+                        figures = listFigures.Search(new GeometryFigures.Figures.Rectangle(lenght, width));
                         break;
                     case TypeFigure.Triangle://Для треугольника
                         double base_value = ValidationClass.TryParse("Основание", textBox1.Text);

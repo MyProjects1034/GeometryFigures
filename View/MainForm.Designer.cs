@@ -202,7 +202,7 @@ namespace View
             // 
             // figureBindingSource
             // 
-            this.figureBindingSource.DataSource = typeof(GeometryFigures.Figure);
+            this.figureBindingSource.DataSource = typeof(GeometryFigures.Figures.IFigure);
             // 
             // menuStrip1
             // 
